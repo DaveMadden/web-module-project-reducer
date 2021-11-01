@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import reducer, { initialState } from './reducers';
-import { applyNumber, changeOperation, clearDisplay} from './actions';
+import { applyNumber, changeOperation, clearDisplay, mAdd, mClear, mRecall} from './actions';
 
 import './App.css';
 
@@ -24,6 +24,15 @@ function App() {
     console.log("click clear");
     dispatch(clearDisplay());
   }
+  const handleMemAdd = () => {
+    dispatch(mAdd());
+  }
+  const handleMemClear = () => {
+    dispatch(mClear());
+  }
+  const handleMemRecall = () => {
+    dispatch(mRecall());
+  }
 
   return (
     <div className="App">
@@ -42,9 +51,9 @@ function App() {
             </div>
             
             <div className="row">
-              <CalcButton value={"M+"}/>
-              <CalcButton value={"MR"}/>
-              <CalcButton value={"MC"}/>
+              <CalcButton value={"M+"} onClick={() => {handleMemAdd()}}/>
+              <CalcButton value={"MR"} onClick={() => {handleMemRecall()}}/>
+              <CalcButton value={"MC"} onClick={() => {handleMemClear()}}/>
             </div>
 
             <div className="row">
